@@ -14,6 +14,8 @@ Div-ine is a movie suggestion website designed to help users discover movies bas
 ⚡ Fast and simple movie discovery experience
 🖥️ Preview
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-2EA44F?style=for-the-badge&logo=vercel&logoColor=white)]([https://meer-md-shoaib.itch.io/snake](https://meer-md-shoaib.github.io/-Div-ine/))
+
 
 🛠️ Tech Stack
 Frontend: HTML, CSS, JavaScript
