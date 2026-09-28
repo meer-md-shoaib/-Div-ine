@@ -388,3 +388,72 @@ function surpriseMeMovie() {
     showToast(🎲 Div-ine Destiny Picked: !, '✨');
     openDetailModal(randomMovie.id);
 }
+/* ==========================================================================
+   Feedback Manager & Star Rating Engine
+   ========================================================================== */
+
+let selectedRating = 5;
+
+function setRating(rating) {
+    selectedRating = rating;
+    const stars = document.querySelectorAll('.star-rating-row span');
+    stars.forEach((star, idx) => {
+        star.style.opacity = idx < rating ? '1' : '0.25';
+    });
+}
+
+function handleFeedbackSubmit(event) {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value.trim();
+    const roll = form.roll.value.trim();
+    const message = form.message.value.trim();
+
+    const newFeedback = {
+        name,
+        roll,
+        rating: selectedRating,
+        message,
+        date: new Date().toLocaleDateString()
+    };
+
+    AppState.feedbackList.unshift(newFeedback);
+    localStorage.setItem('divine_feedback', JSON.stringify(AppState.feedbackList));
+
+    form.reset();
+    setRating(5);
+    renderFeedbackHistory();
+
+    const funnyReplies = [
+        `Thanks ${name}! Your feedback has been forwarded to NASA.`,
+        `Saved, ${name}! If this is a roast, we are currently weeping.`,
+        `Awesome ${name}! Our popcorn rating went up by 10 points.`,
+        `Feedback logged! Babu Bhaiya approves your message.`
+    ];
+    const reply = funnyReplies[Math.floor(Math.random() * funnyReplies.length)];
+    showToast(reply, '🚀');
+}
+
+function renderFeedbackHistory() {
+    const listEl = document.getElementById('feedback-history-list');
+    if (!listEl) return;
+
+    if (AppState.feedbackList.length === 0) {
+        listEl.innerHTML = `<p style="color: #333; font-style: italic;">No yells yet. Be the first brave soul to leave your mark!</p>`;
+        return;
+    }
+
+    listEl.innerHTML = `
+        <h4 style="font-family: var(--font-comic); font-size: 1.4rem; margin-bottom: 12px;">Recent Community Yells:</h4>
+        ${AppState.feedbackList.slice(0, 5).map(f => `
+            <div class="feedback-item-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                    <strong>${f.name} (${f.roll || 'Anonymous'})</strong>
+                    <span>${'⭐'.repeat(f.rating)}</span>
+                </div>
+                <p style="color: #2c3e50; font-size: 0.95rem; margin: 0;">"${f.message}"</p>
+                <small style="color: #888;">${f.date}</small>
+            </div>
+        `).join('')}
+    `;
+}
