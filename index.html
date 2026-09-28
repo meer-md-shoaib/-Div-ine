@@ -3,418 +3,351 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>&lt;Div&gt;ine - The Funny Version</title>
-    <style>
-        /* --- THE STYLE SECTION (CSS) --- */
-        @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Poppins:wght@400;700&display=swap');
-
-        :root {
-            --primary: #FFD700; /* Pop Art Yellow */
-            --secondary: #9b59b6; /* Vivid Purple */
-            --dark: #2c3e50;
-            --light: #ecf0f1;
-        }
-
-        body {
-            margin: 0;
-            font-family: 'Poppins', sans-serif;
-            background-color: #2c3e50;
-            color: white;
-            overflow-x: hidden;
-        }
-
-        /* Comic Book Style Headings */
-        h1, h2, h3, .logo {
-            font-family: 'Bangers', cursive;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        /* Navigation */
-        nav {
-            background: var(--primary);
-            padding: 15px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 5px 5px 0px #000;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .logo {
-            font-size: 2rem;
-            color: #000;
-            text-shadow: 2px 2px 0px white;
-        }
-
-        .nav-links button {
-            background: transparent;
-            border: none;
-            font-family: 'Bangers', cursive;
-            font-size: 1.2rem;
-            margin-left: 20px;
-            cursor: pointer;
-            color: #000;
-            transition: 0.2s;
-        }
-
-        .nav-links button:hover {
-            transform: scale(1.2) rotate(-3deg);
-            color: var(--secondary);
-        }
-
-        /* Pages Logic (Single Page App) */
-        .page-section {
-            display: none; /* Hidden by default */
-            padding: 40px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            animation: popIn 0.5s ease;
-        }
-
-        .page-section.active {
-            display: block; /* Show only active section */
-        }
-
-        @keyframes popIn {
-            0% { transform: scale(0.8); opacity: 0; }
-            80% { transform: scale(1.05); }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        /* Home Page Styling */
-        .hero {
-            text-align: center;
-            padding: 60px 0;
-        }
-        .hero h1 {
-            font-size: 5rem;
-            color: var(--primary);
-            text-shadow: 4px 4px 0px #000;
-        }
-        .fun-fact {
-            background: var(--secondary);
-            color: white;
-            padding: 20px;
-            border-radius: 15px;
-            display: inline-block;
-            margin-top: 20px;
-            border: 3px solid #000;
-            box-shadow: 5px 5px 0px #000;
-        }
-
-        /* Genre Cards */
-        .genre-grid {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .genre-card {
-            background: white;
-            color: black;
-            padding: 30px;
-            width: 180px;
-            text-align: center;
-            border: 3px solid #000;
-            box-shadow: 8px 8px 0px #000;
-            cursor: pointer;
-            transition: 0.3s;
-            font-family: 'Bangers', cursive;
-            font-size: 1.5rem;
-        }
-
-        .genre-card:hover {
-            transform: translate(-5px, -5px);
-            box-shadow: 13px 13px 0px var(--secondary);
-            background: var(--primary);
-        }
-
-        /* Movie Cards */
-        .movie-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .movie-card {
-            background: #fff;
-            color: #000;
-            border: 3px solid #000;
-            border-radius: 10px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .movie-card img {
-            width: 100%;
-            height: 350px;
-            object-fit: cover;
-            border-bottom: 3px solid #000;
-        }
-
-        .movie-info {
-            padding: 15px;
-        }
-
-        .funny-caption {
-            font-size: 0.9rem;
-            color: var(--secondary);
-            font-style: italic;
-            font-weight: bold;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .btn {
-            display: block;
-            background: black;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            text-decoration: none;
-            font-family: 'Bangers', cursive;
-            letter-spacing: 1px;
-            transition: 0.2s;
-        }
-        .btn:hover {
-            background: var(--secondary);
-        }
-
-        /* About Section */
-        .team-box {
-            background: white;
-            color: black;
-            padding: 30px;
-            border: 4px solid var(--primary);
-            border-radius: 20px;
-            box-shadow: 10px 10px 0px rgba(0,0,0,0.5);
-        }
-
-        /* Form */
-        input, textarea {
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 15px;
-            border: 3px solid #000;
-            font-family: 'Poppins', sans-serif;
-            box-sizing: border-box;
-        }
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            background: #fffde7;
-        }
-
-    </style>
+    <meta name="description" content="<Div>ine - The Ultimate Pop-Art Comic Movie Discovery Experience. Find trailers, funny verdicts, and hand-picked movies across genres.">
+    <title>&lt;Div&gt;ine - The Comic Movie Universe</title>
+    
+    <!-- External Modular Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%3E<text y=%2226%22 font-size=%2228%22>🍿</text></svg>">
 </head>
 <body>
 
-
-
-<!-- Navigation -->
-<nav>
-    <div class="logo">&lt;Div&gt;ine</div>
-    <div class="nav-links">
-        <button onclick="showPage('home')">Home</button>
-        <button onclick="showPage('genre')">Genre</button>
-        <button onclick="showPage('about')">About</button>
-        <button onclick="showPage('feedback')">Feedback</button>
-    </div>
-</nav>
-
-
-
-<!-- MAIN APP CONTAINER -->
-<div id="app">
-
-    <!-- 1. HOME PAGE -->
-    <section id="home" class="page-section active">
-        <div class="hero">
-            <h1>Welcome to Movie!</h1>
-            <p style="font-size: 1.5rem;">We waste our time watching them so you don't have to.</p>
-            
-            <div class="fun-fact">
-                <h3>Did you know?</h3>
-                <p>Watching 3 hours of movies burns 0 calories, but it feels great.</p>
-            </div>
-            <br><br><br>
-            <button onclick="showPage('genre')" style="padding: 15px 40px; font-size: 1.5rem; background: var(--primary); border: 3px solid black; cursor: pointer; font-family: 'Bangers'; box-shadow: 5px 5px 0px white;">Start Watching</button>
+    <!-- ==========================================
+         TOP NAVIGATION BAR
+         ========================================== -->
+    <nav class="comic-nav">
+        <div class="logo-container" onclick="showPage('home')">
+            <span class="logo-badge">&lt;Div&gt;ine</span>
+            <span class="logo-sub">Movie Central</span>
         </div>
-    </section>
 
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle navigation">
+            ☰
+        </button>
 
-
-    <!-- 2. GENRE PAGE -->
-    <section id="genre" class="page-section">
-        <h2 style="text-align: center; color: var(--primary); font-size: 3rem;">Pick Your Poison</h2>
-        <div class="genre-grid">
-            <div class="genre-card" onclick="filterMovies('Action')">Action <br><span style="font-size:0.8rem; font-family:'Poppins'">(Explosions)</span></div>
-            <div class="genre-card" onclick="filterMovies('Comedy')">Comedy <br><span style="font-size:0.8rem; font-family:'Poppins'">(Haha Funni)</span></div>
-            <div class="genre-card" onclick="filterMovies('Romance')">Romance <br><span style="font-size:0.8rem; font-family:'Poppins'">(Lovey Dovey)</span></div>
-            <div class="genre-card" onclick="filterMovies('Horror')">Horror <br><span style="font-size:0.8rem; font-family:'Poppins'">(Don't look)</span></div>
-            <div class="genre-card" onclick="filterMovies('Superhero')">Superhero <br><span style="font-size:0.8rem; font-family:'Poppins'">(Spandex)</span></div>
+        <div class="nav-links">
+            <button onclick="showPage('home')" data-page="home" class="active">🏠 Home</button>
+            <button onclick="showPage('genre')" data-page="genre">🎭 Genres</button>
+            <button onclick="filterMovies('All')" data-page="movies">🍿 All Movies</button>
+            <button onclick="showPage('watchlist')" data-page="watchlist">
+                ❤️ Watchlist <span id="nav-watchlist-count" class="nav-badge-count">0</span>
+            </button>
+            <button onclick="showPage('about')" data-page="about">👥 Team</button>
+            <button onclick="showPage('feedback')" data-page="feedback">💬 Feedback</button>
         </div>
-    </section>
+    </nav>
 
+    <!-- ==========================================
+         MAIN SINGLE PAGE APP CONTAINER
+         ========================================== -->
+    <div id="app">
 
+        <!-- 1. HOME PAGE -->
+        <section id="home" class="page-section active">
+            <div class="hero">
+                <div class="hero-badges-row">
+                    <span class="comic-pill">🔥 35+ CURATED MOVIES</span>
+                    <span class="comic-pill" style="background: var(--secondary); color:#fff;">⚡ INSTANT TRAILERS</span>
+                    <span class="comic-pill" style="background: var(--accent-red); color:#fff;">🍿 0 CALORIES BURNED</span>
+                </div>
 
-    <!-- 3. MOVIES LIST PAGE (Hidden until genre clicked) -->
-    <section id="movies" class="page-section">
-        <button onclick="showPage('genre')" style="background:none; border:none; color:var(--primary); cursor:pointer; font-size: 1.2rem;">&larr; Back to Genres</button>
-        <h2 id="movie-header" style="color: white; margin-bottom: 20px;">Movies</h2>
-        <div class="movie-grid" id="movie-container">
-            <!-- JS will put movies here -->
-        </div>
-    </section>
+                <h1 class="hero-title">WELCOME TO &lt;DIV&gt;INE!</h1>
+                <p class="hero-subtitle">
+                    We waste our precious hours watching movies so you don't have to suffer through the bad ones. Unfiltered comic reviews, trailers, and pure chaos.
+                </p>
 
+                <!-- Fun Fact Rotating Bubble -->
+                <div class="fun-fact-container" onclick="rotateFunFact()" title="Click for another fun fact!">
+                    <h3>⚡ DID YOU KNOW? (Click Me!)</h3>
+                    <p id="hero-fun-fact" style="font-size: 1.15rem; font-weight: 600;">
+                        Watching 3 hours of movies burns roughly 0 calories, but fills 100% of your soul.
+                    </p>
+                </div>
 
+                <div style="margin-top: 30px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                    <button class="btn-comic" style="font-size: 1.4rem; padding: 14px 32px;" onclick="showPage('genre')">
+                        🚀 Start Exploring (<span id="total-movies-count">35</span> Movies)
+                    </button>
+                    <button class="btn-comic btn-secondary" style="font-size: 1.4rem; padding: 14px 28px;" onclick="surpriseMeMovie()">
+                        🎲 Surprise Me!
+                    </button>
+                </div>
 
-    <!-- 4. ABOUT PAGE -->
-    <section id="about" class="page-section">
-        <div class="team-box">
-            <h2 style="color: var(--secondary);">Created By: Team &lt;Div&gt;ine</h2>
-            <p><i>"We code so we don't have to talk to people."</i></p>
-            
-            <!-- University Image -->
-            <img src="pu.jpg" 
-                 alt="Presidency Uni" style="width: 100%; height: 250px; object-fit: cover; border: 3px solid black; margin: 20px 0;">
-
-            <ul>
-                <li><strong>Meer Mohammed Shoaib:</strong> The Leader</li>
-                <li><strong>Mohommed Adil:</strong> The Coder</li>
-                <li><strong>Nihaal R:</strong> The Soldier</li>
-                <li><strong>Shreyas Bharadwaj:</strong> The Healer</li>
-            </ul>
-            <hr>
-            <p><strong>Class:</strong> 3CSE14 (The cool class)</p>
-            <p><strong>University:</strong> Presidency University, Bangalore</p>
-            <p><strong>Address:</strong> Itgalpur, Rajanakunte (Practically a road trip from the city)</p>
-        </div>
-    </section>
-
-    <!-- 5. FEEDBACK PAGE -->
-    <section id="feedback" class="page-section">
-        <h2 style="text-align: center;">Yell at us here</h2>
-        <div style="max-width: 600px; margin: 0 auto; background: var(--primary); padding: 30px; border: 3px solid black; box-shadow: 10px 10px 0 white; color: black;">
-            <form onsubmit="alert('Feedback sent into the void! (Just kidding, thanks!)'); return false;">
-                <label>Name:</label>
-                <input type="text" placeholder="Who are you?" required>
-                
-                <label>Roll Number:</label>
-                <input type="text" placeholder="So we can track you..." required>
-                
-                <label>Feedback:</label>
-                <textarea rows="5" placeholder="Tell us how awesome we are..." required></textarea>
-                
-                <button type="submit" style="width:100%; padding: 15px; background: black; color: white; border: none; font-family: 'Bangers'; font-size: 1.5rem; cursor: pointer;">SEND IT</button>
-            </form>
-        </div>
-    </section>
-
-</div>
-
-<script>
-    // --- THE BRAINS ---
-    
-    // 1. The Movie Database (Array of Objects)
-    const moviesDB = [
-        // --- ACTION ---
-        { title: "John Wick 4", genre: "Action", img: "https://image.tmdb.org/t/p/w500/vZloFAK7NmvMGKE7VkF5UHaz0I.jpg", caption: "Local dog lover kills 400 people.", link: "https://www.youtube.com/watch?v=qEVUtrk8_B4" },
-
-        { title: "Bullet Train", genre: "Action", img: "https://image.tmdb.org/t/p/w500/tVxDe01Zy3kZqaZRNiXFGDICdZk.jpg", caption: "Thomas the Tank Engine for psychopaths.", link: "https://www.youtube.com/watch?v=0IOsk2Vun8Q" },
-
-        { title: "Dhoom", genre: "Action", img: "dhoom.jpeg", caption: "Physics left the chat.", link: "https://www.youtube.com/watch?v=drQ9t5bFmJc" },
-
-        { title: "Jawan", genre: "Action", img: "jawan.jpg", caption: "Too many bandages, infinite swag.", link: "https://www.youtube.com/watch?v=COv52Qyctws" },
-        
-
-
-        // --- COMEDY ---
-        { title: "The Hangover", genre: "Comedy", img: "hangover.jpg", caption: "Why you should never go to Vegas.", link: "https://www.youtube.com/watch?v=tcdUhdOlz9M" },
-
-        { title: "The Mask", genre: "Comedy", img: "mask.jpeg", caption: "S-s-s-smokin'!", link: "https://www.youtube.com/watch?v=LZl69yk5lEY" },
-
-        { title: "Dhamaal", genre: "Comedy", img: "dhamaal.jpg", caption: "Looking for a big 'W' under a palm tree.", link: "https://www.youtube.com/watch?v=6Q9qX9i5g5M" },
-
-        { title: "Hera Pheri", genre: "Comedy", img: "hera pheri.jpeg", caption: "21 days to double your money. Totally legit.", link: "https://www.youtube.com/watch?v=3K1Hh5Gz1kU" },
-
-
-
-        // --- ROMANCE ---
-        { title: "Titanic", genre: "Romance", img: "https://image.tmdb.org/t/p/w500/9xjZS2rlVxm8SFx8kPC3aIGCOYQ.jpg", caption: "Spoiler: The boat sinks.", link: "https://www.youtube.com/watch?v=kVrqfYjkTdQ" },
-
-        { title: "The Notebook", genre: "Romance", img: "https://image.tmdb.org/t/p/w500/rNzQyW4f8B8cQeg7Dgj3n6eT5k9.jpg", caption: "Crying guaranteed or money back.", link: "https://www.youtube.com/watch?v=FC6biTjEyZw" },
-
-        { title: "Om Shanti Om", genre: "Romance", img: "om.jpg", caption: "Reincarnation: The ultimate comeback.", link: "https://www.youtube.com/watch?v=NBw5YScs8iQ" },
-
-
-
-        // --- HORROR ---
-        { title: "It", genre: "Horror", img: "https://image.tmdb.org/t/p/w500/9E2y5Q7WlCVNEhP5GiVTjhEhx1o.jpg", caption: "Never talk to clowns in sewers.", link: "https://www.youtube.com/watch?v=FnCdOQsX5kc" },
-
-        { title: "The Conjuring", genre: "Horror", img: "conjuring.jpeg", caption: "Clap clap. You're dead.", link: "https://www.youtube.com/watch?v=k10ETZ41q5o" },
-
-        { title: "Stree", genre: "Horror", img: "https://upload.wikimedia.org/wikipedia/en/4/4f/Stree_-_2018_Movie_Poster.jpg", caption: "O Stree kal aana (Please don't come today).", link: "https://www.youtube.com/watch?v=gze8xBdW3T4" },
-
-        { title: "Tumbbad", genre: "Horror", img: "https://upload.wikimedia.org/wikipedia/en/4/41/Tumbbad_poster.jpg", caption: "Greed is bad, but the visuals are 10/10.", link: "https://www.youtube.com/watch?v=sN75MPHgvX8" },
-
-
-
-        // --- SUPERHERO ---
-        { title: "The Dark Knight", genre: "Superhero", img: "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg", caption: "Rich guy beats up clowns at night.", link: "https://www.youtube.com/watch?v=EXeTwQWrcwY" },
-        { title: "Avengers: Endgame", genre: "Superhero", img: "https://image.tmdb.org/t/p/w500/or06FN3Dka5tukK1e9sl16pB3iy.jpg", caption: "Thanos was kinda right though.", link: "https://www.youtube.com/watch?v=TcMBFSGVi1c" },
-        { title: "Iron Man", genre: "Superhero", img: "https://image.tmdb.org/t/p/w500/78lPtwv72eTNqFW9COBYI0dWDJa.jpg", caption: "Genius, Billionaire, Playboy, Philanthropist.", link: "https://www.youtube.com/watch?v=8ugaeA-nMTc" },
-        { title: "Man of Steel", genre: "Superhero", img: "superman.jpeg", caption: "Property Damage: The Movie.", link: "https://www.youtube.com/watch?v=T6DJcgm3wNY" }
-    ];
-
-
-
-    function showPage(pageId) {
-        // Hide all pages
-        document.querySelectorAll('.page-section').forEach(section => {
-            section.classList.remove('active');
-        });
-        // Show the specific page
-        document.getElementById(pageId).classList.add('active');
-    }
-
-
-
-    // 3. Function to filter and show movies
-    function filterMovies(genre) {
-        const container = document.getElementById('movie-container');
-        const header = document.getElementById('movie-header');
-        
-        // Clear previous movies
-        container.innerHTML = '';
-        header.innerText = genre + " Movies";
-
-        // Filter logic
-        const filtered = moviesDB.filter(m => m.genre === genre);
-
-        // Loop through filtered movies and create HTML
-        filtered.forEach(movie => {
-            const card = `
-                <div class="movie-card">
-                    <img src="${movie.img}" alt="${movie.title}">
-                    <div class="movie-info">
-                        <h3>${movie.title}</h3>
-                        <span class="funny-caption">${movie.caption}</span>
-                        <a href="${movie.link}" target="_blank" class="btn">▶ Watch Trailer</a>
+                <!-- Mood Selector -->
+                <div class="mood-selector-box">
+                    <div class="mood-title">🎯 WHAT'S YOUR MOVIE VIBE RIGHT NOW?</div>
+                    <div class="mood-chips">
+                        <div class="mood-chip" onclick="filterByMood('laugh')">😂 Laugh till ribs hurt</div>
+                        <div class="mood-chip" onclick="filterByMood('adrenaline')">💥 Pure Adrenaline Rush</div>
+                        <div class="mood-chip" onclick="filterByMood('cry')">😭 Emotional Tears & Tissues</div>
+                        <div class="mood-chip" onclick="filterByMood('mindblown')">🤯 Mind-Bending Twists</div>
+                        <div class="mood-chip" onclick="filterByMood('spooky')">👻 Spooky Nightmare Fuel</div>
                     </div>
                 </div>
-            `;
-            container.innerHTML += card;
-        });
+            </div>
+        </section>
 
-        // Switch to movie page
-        showPage('movies');
-    }
-</script>
+        <!-- 2. GENRES PAGE -->
+        <section id="genre" class="page-section">
+            <h2 style="text-align: center; color: var(--primary); font-size: 3.2rem; margin-bottom: 8px;">
+                PICK YOUR POISON 🧪
+            </h2>
+            <p style="text-align: center; font-size: 1.2rem; color: #fff; max-width: 600px; margin: 0 auto 30px;">
+                Choose a genre to view hand-picked movies, hilarious verdicts, and trailers.
+            </p>
+
+            <div class="genre-grid">
+                <div class="genre-card" onclick="filterMovies('Action')">
+                    <span class="genre-count-badge" id="count-action">7</span>
+                    <span class="genre-emoji">💥</span>
+                    Action
+                    <span class="genre-sub">(Explosions & High Octane)</span>
+                </div>
+                <div class="genre-card" onclick="filterMovies('Comedy')">
+                    <span class="genre-count-badge" id="count-comedy">6</span>
+                    <span class="genre-emoji">😂</span>
+                    Comedy
+                    <span class="genre-sub">(Haha Funni Memes)</span>
+                </div>
+                <div class="genre-card" onclick="filterMovies('Romance')">
+                    <span class="genre-count-badge" id="count-romance">5</span>
+                    <span class="genre-emoji">❤️</span>
+                    Romance
+                    <span class="genre-sub">(Lovey Dovey Crying)</span>
+                </div>
+                <div class="genre-card" onclick="filterMovies('Horror')">
+                    <span class="genre-count-badge" id="count-horror">5</span>
+                    <span class="genre-emoji">👻</span>
+                    Horror
+                    <span class="genre-sub">(Don't Look Behind You)</span>
+                </div>
+                <div class="genre-card" onclick="filterMovies('Superhero')">
+                    <span class="genre-count-badge" id="count-superhero">5</span>
+                    <span class="genre-emoji">🦸</span>
+                    Superhero
+                    <span class="genre-sub">(Spandex & City Demolition)</span>
+                </div>
+                <div class="genre-card" onclick="filterMovies('Sci-Fi')">
+                    <span class="genre-count-badge" id="count-sci-fi">4</span>
+                    <span class="genre-emoji">🚀</span>
+                    Sci-Fi
+                    <span class="genre-sub">(Black Holes & Red Pills)</span>
+                </div>
+                <div class="genre-card" onclick="filterMovies('Animation')">
+                    <span class="genre-count-badge" id="count-animation">3</span>
+                    <span class="genre-emoji">🎨</span>
+                    Animation
+                    <span class="genre-sub">(Pure Masterpieces)</span>
+                </div>
+                <div class="genre-card" onclick="filterMovies('Thriller')">
+                    <span class="genre-count-badge" id="count-thriller">3</span>
+                    <span class="genre-emoji">🔪</span>
+                    Thriller
+                    <span class="genre-sub">(Edge-Of-Your-Seat Whodunits)</span>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <button class="btn-comic" style="font-size: 1.3rem;" onclick="filterMovies('All')">
+                    👀 Or Browse All Movies Together
+                </button>
+            </div>
+        </section>
+
+        <!-- 3. MOVIES CATALOG PAGE -->
+        <section id="movies" class="page-section">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+                <button class="btn-comic btn-sm btn-secondary" onclick="showPage('genre')">
+                    &larr; Back to Genres
+                </button>
+                <button class="btn-comic btn-sm" onclick="surpriseMeMovie()">
+                    🎲 Random Movie Pick
+                </button>
+            </div>
+
+            <h2 id="movie-header" style="color: var(--primary); font-size: 2.8rem; margin-bottom: 20px;">
+                Movies
+            </h2>
+
+            <!-- Search & Filter Toolbar -->
+            <div class="movies-toolbar">
+                <div class="search-input-wrapper">
+                    <span class="search-icon">🔍</span>
+                    <input 
+                        type="text" 
+                        id="movie-search-input" 
+                        placeholder="Search by title, director, actors, or keywords (Press '/' to focus)..." 
+                        oninput="handleSearch(this.value)"
+                    >
+                </div>
+
+                <div class="filter-controls-row">
+                    <select class="comic-select" onchange="filterMovies(this.value)">
+                        <option value="All">All Genres</option>
+                        <option value="Action">Action</option>
+                        <option value="Comedy">Comedy</option>
+                        <option value="Romance">Romance</option>
+                        <option value="Horror">Horror</option>
+                        <option value="Superhero">Superhero</option>
+                        <option value="Sci-Fi">Sci-Fi</option>
+                        <option value="Animation">Animation</option>
+                        <option value="Thriller">Thriller</option>
+                    </select>
+
+                    <select class="comic-select" onchange="handleSort(this.value)">
+                        <option value="default">Sort by: Default</option>
+                        <option value="rating-desc">Rating: Highest First ⭐</option>
+                        <option value="year-desc">Year: Newest First 📅</option>
+                        <option value="year-asc">Year: Oldest First 🕰️</option>
+                        <option value="title-asc">Title: A &rarr; Z 🔤</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Dynamic Movies Grid -->
+            <div class="movie-grid" id="movie-container">
+                <!-- Injected dynamically via JS -->
+            </div>
+        </section>
+
+        <!-- 4. WATCHLIST PAGE -->
+        <section id="watchlist" class="page-section">
+            <h2 style="color: var(--primary); font-size: 2.8rem; margin-bottom: 6px;">
+                ❤️ MY SAVED WATCHLIST (<span id="watchlist-page-count">0</span>)
+            </h2>
+            <p style="color: #fff; margin-bottom: 25px; font-size: 1.1rem;">
+                Your personal stash of movies ready for your next movie marathon session. Saved in your browser!
+            </p>
+
+            <div class="movie-grid" id="watchlist-container">
+                <!-- Injected dynamically via JS -->
+            </div>
+        </section>
+
+        <!-- 5. ABOUT / TEAM PAGE -->
+        <section id="about" class="page-section">
+            <div class="team-container">
+                <h2 class="team-header-tag">&lt;Div&gt;ine Team Dossier</h2>
+                <p style="font-size: 1.1rem; font-style: italic; color: #555;">
+                    "We code so we don't have to talk to people, and we watch movies so we don't have to think."
+                </p>
+
+                <!-- University Campus Photo -->
+                <img 
+                    src="assets/images/pu.jpg" 
+                    alt="Presidency University Campus" 
+                    class="university-banner"
+                    onerror="this.onerror=null; this.src='pu.jpg';"
+                >
+
+                <h3 style="font-size: 1.8rem; margin-top: 15px; color: #000;">THE SQUAD (3CSE14)</h3>
+                <div class="team-members-grid">
+                    <div class="member-card">
+                        <h4>Meer Mohammed Shoaib</h4>
+                        <span class="member-role">👑 The Leader & Architect</span>
+                        <p style="font-size: 0.9rem; color: #555; margin-top: 6px;">Visionary captain keeping the project alive and popcorn popping.</p>
+                    </div>
+                    <div class="member-card">
+                        <h4>Mohommed Adil</h4>
+                        <span class="member-role">💻 The Coder Extraordinaire</span>
+                        <p style="font-size: 0.9rem; color: #555; margin-top: 6px;">Turning coffee into bug-free JavaScript and responsive CSS.</p>
+                    </div>
+                    <div class="member-card">
+                        <h4>Nihaal R</h4>
+                        <span class="member-role">⚔️ The Soldier</span>
+                        <p style="font-size: 0.9rem; color: #555; margin-top: 6px;">Tackling edge cases, asset optimization, and quality assurance.</p>
+                    </div>
+                    <div class="member-card">
+                        <h4>Shreyas Bharadwaj</h4>
+                        <span class="member-role">🩹 The Healer</span>
+                        <p style="font-size: 0.9rem; color: #555; margin-top: 6px;">Restoring broken tags, validating trailers, and morale boosting.</p>
+                    </div>
+                </div>
+
+                <hr style="border: 2px dashed #000; margin: 25px 0;">
+                <p><strong>Class:</strong> 3CSE14 (The cool, legendary batch)</p>
+                <p><strong>Institution:</strong> Presidency University, Bengaluru</p>
+                <p><strong>Coordinates:</strong> Itgalpur, Rajanakunte (A scenic expedition away from the city center)</p>
+            </div>
+        </section>
+
+        <!-- 6. FEEDBACK PAGE -->
+        <section id="feedback" class="page-section">
+            <h2 style="text-align: center; color: var(--primary); font-size: 3rem; margin-bottom: 10px;">
+                YELL AT US HERE 📣
+            </h2>
+            <p style="text-align: center; color: #fff; margin-bottom: 30px; font-size: 1.15rem;">
+                Got movie suggestions, complaints, or love letters? Fire away below.
+            </p>
+
+            <div class="feedback-box">
+                <form id="feedback-form" onsubmit="handleFeedbackSubmit(event)">
+                    <label style="font-weight: 700; display: block; margin-bottom: 4px;">Rate your experience:</label>
+                    <div class="star-rating-row" title="Click to rate">
+                        <span onclick="setRating(1)">⭐</span>
+                        <span onclick="setRating(2)">⭐</span>
+                        <span onclick="setRating(3)">⭐</span>
+                        <span onclick="setRating(4)">⭐</span>
+                        <span onclick="setRating(5)">⭐</span>
+                    </div>
+
+                    <label style="font-weight: 700; display: block; margin-bottom: 4px;">Your Name:</label>
+                    <input type="text" name="name" placeholder="E.g., Babu Bhaiya or Bruce Wayne" required>
+
+                    <label style="font-weight: 700; display: block; margin-bottom: 4px;">Roll Number / Identity:</label>
+                    <input type="text" name="roll" placeholder="20241CSE0..." required>
+
+                    <label style="font-weight: 700; display: block; margin-bottom: 4px;">Feedback / Movie Request:</label>
+                    <textarea name="message" rows="4" placeholder="Tell us how awesome we are, or request a movie we missed..." required></textarea>
+
+                    <button type="submit" class="btn-comic" style="width: 100%; font-size: 1.4rem; padding: 14px; background: #000; color: #fff;">
+                        🚀 SEND IT INTO THE VOID
+                    </button>
+                </form>
+
+                <div id="feedback-history-list" class="feedback-history-list">
+                    <!-- Dynamic feedback history -->
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ==========================================
+         MODAL: YOUTUBE TRAILER PLAYER
+         ========================================== -->
+    <div id="trailer-modal" class="comic-modal-overlay">
+        <div class="comic-modal-card">
+            <div class="comic-modal-header">
+                <h3 id="trailer-modal-title">Official Trailer</h3>
+                <button class="modal-close-btn" onclick="closeTrailerModal()" title="Close (Esc)">✕</button>
+            </div>
+            <div class="comic-modal-body" style="padding: 15px;">
+                <div class="video-responsive-wrap" id="trailer-video-container">
+                    <!-- YouTube iframe injected here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         MODAL: MOVIE QUICK DETAILS
+         ========================================== -->
+    <div id="detail-modal" class="comic-modal-overlay">
+        <div class="comic-modal-card">
+            <div class="comic-modal-header">
+                <h3 id="detail-modal-title">Movie Details</h3>
+                <button class="modal-close-btn" onclick="closeDetailModal()" title="Close (Esc)">✕</button>
+            </div>
+            <div class="comic-modal-body" id="detail-modal-body">
+                <!-- Dynamic details injected here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Core Scripts -->
+    <script src="js/movies-data.js"></script>
+    <script src="js/app.js"></script>
 
 </body>
 </html>
