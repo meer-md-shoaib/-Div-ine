@@ -457,3 +457,41 @@ function renderFeedbackHistory() {
         `).join('')}
     `;
 }
+/* ==========================================================================
+   Global Event Listeners & Keyboard Shortcuts
+   ========================================================================== */
+
+function toggleMobileMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    if (navLinks) {
+        navLinks.classList.toggle('mobile-open');
+    }
+}
+
+function initEventListeners() {
+    // Keyboard shortcuts: Escape to close modals, Slash to search
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeTrailerModal();
+            closeDetailModal();
+        } else if (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+            e.preventDefault();
+            showPage('movies');
+            const searchInput = document.getElementById('movie-search-input');
+            if (searchInput) searchInput.focus();
+        }
+    });
+
+    // Close modal on background overlay click
+    document.querySelectorAll('.comic-modal-overlay').forEach(modal => {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeTrailerModal();
+                closeDetailModal();
+            }
+        });
+    });
+
+    // Setup periodic fact rotator
+    setInterval(rotateFunFact, 12000);
+}
