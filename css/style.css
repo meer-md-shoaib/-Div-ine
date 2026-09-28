@@ -625,3 +625,147 @@ nav.comic-nav {
 .movie-card-actions a {
     flex: 1;
 }
+/* ==========================================================================
+   Modals: Trailer Player, Movie Details & Surprise Roulette
+   ========================================================================== */
+.comic-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 20px;
+    backdrop-filter: blur(4px);
+}
+
+.comic-modal-overlay.active {
+    display: flex;
+}
+
+.comic-modal-card {
+    background: #ffffff;
+    color: #000000;
+    border: var(--border-extra);
+    box-shadow: var(--shadow-xl);
+    max-width: 800px;
+    width: 100%;
+    border-radius: var(--radius-md);
+    position: relative;
+    overflow: hidden;
+    animation: comicPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.comic-modal-header {
+    background: var(--primary);
+    padding: 14px 20px;
+    border-bottom: var(--border-thick);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comic-modal-header h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #000000;
+}
+
+.modal-close-btn {
+    background: #000000;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: 900;
+    font-size: 1.1rem;
+    box-shadow: 2px 2px 0px #000;
+    transition: all 0.15s ease;
+}
+
+.modal-close-btn:hover {
+    background: var(--accent-red);
+    transform: rotate(90deg);
+}
+
+.comic-modal-body {
+    padding: 20px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.video-responsive-wrap {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    background: #000000;
+    border: var(--border-thick);
+    box-shadow: var(--shadow-hard);
+}
+
+.video-responsive-wrap iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* Detail Modal Content */
+.movie-modal-grid {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 20px;
+}
+
+@media (max-width: 640px) {
+    .movie-modal-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.modal-poster {
+    width: 100%;
+    height: 330px;
+    object-fit: cover;
+    border: var(--border-thick);
+    box-shadow: var(--shadow-hard);
+}
+
+.modal-info-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.modal-pill-tag {
+    display: inline-block;
+    background: var(--secondary);
+    color: #ffffff;
+    font-family: var(--font-comic);
+    padding: 3px 10px;
+    border: 2px solid #000;
+    font-size: 0.95rem;
+    margin-right: 6px;
+}
+
+.verdict-box {
+    background: #fffde7;
+    border-left: 6px solid var(--primary);
+    padding: 12px 14px;
+    font-family: var(--font-fun);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #2c3e50;
+    box-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+}
