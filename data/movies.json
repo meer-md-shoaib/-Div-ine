@@ -1,0 +1,72 @@
+﻿[
+  {
+    \"id\": \"john-wick-4\",
+    \"title\": \"John Wick 4\",
+    \"genre\": \"Action\",
+    \"year\": 2023,
+    \"rating\": 7.7,
+    \"runtime\": \"169 min\",
+    \"director\": \"Chad Stahelski\",
+    \"img\": \"https://image.tmdb.org/t/p/w500/vZloFAK7NmvMGKE7VkF5UHaz0I.jpg\",
+    \"caption\": \"Local dog lover kills 400 people on stairs.\",
+    \"verdict\": \"Do NOT touch anyone's dog. Ever.\",
+    \"trailerId\": \"qEVUtrk8_B4\",
+    \"tags\": [\"explosions\", \"guns\", \"adrenaline\", \"suits\"]
+  },
+  {
+    \"id\": \"interstellar\",
+    \"title\": \"Interstellar\",
+    \"genre\": \"Sci-Fi\",
+    \"year\": 2014,
+    \"rating\": 8.7,
+    \"runtime\": \"169 min\",
+    \"director\": \"Christopher Nolan\",
+    \"img\": \"https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg\",
+    \"caption\": \"Matthew McConaughey crying in a 5th-dimensional bookshelf.\",
+    \"verdict\": \"Love transcends time and gravity, and Hans Zimmer's organ blares.\",
+    \"trailerId\": \"zSWdZVtXT7E\",
+    \"tags\": [\"blackhole\", \"space\", \"tars\", \"docking\"]
+  },
+  {
+    \"id\": \"3-idiots\",
+    \"title\": \"3 Idiots\",
+    \"genre\": \"Comedy\",
+    \"year\": 2009,
+    \"rating\": 8.4,
+    \"runtime\": \"170 min\",
+    \"director\": \"Rajkumar Hirani\",
+    \"img\": \"https://image.tmdb.org/t/p/w500/7492A7wSZyW6eUjW1n1C6M9rJ4S.jpg\",
+    \"caption\": \"All Izz Well (except the engineering semester exams).\",
+    \"verdict\": \"Pursue excellence and success will chase you with pants down.\",
+    \"trailerId\": \"K0eDlFX9GMc\",
+    \"tags\": [\"engineering\", \"college\", \"friendship\", \"inspirational\"]
+  },
+  {
+    \"id\": \"the-dark-knight\",
+    \"title\": \"The Dark Knight\",
+    \"genre\": \"Superhero\",
+    \"year\": 2008,
+    \"rating\": 9.0,
+    \"runtime\": \"152 min\",
+    \"director\": \"Christopher Nolan\",
+    \"img\": \"https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg\",
+    \"caption\": \"Billionaire in bat costume fights psychotic clown who just wants fireworks.\",
+    \"verdict\": \"Why so serious? Heath Ledger's Joker is cinema perfection.\",
+    \"trailerId\": \"EXeTwQWrcwY\",
+    \"tags\": [\"batman\", \"joker\", \"gotham\", \"masterpiece\"]
+  },
+  {
+    \"id\": \"parasite\",
+    \"title\": \"Parasite\",
+    \"genre\": \"Thriller\",
+    \"year\": 2019,
+    \"rating\": 8.5,
+    \"runtime\": \"132 min\",
+    \"director\": \"Bong Joon Ho\",
+    \"img\": \"https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg\",
+    \"caption\": \"Jessica, Only child, Illinois, Chicago. The ultimate hustle gone wild.\",
+    \"verdict\": \"Once you overcome the 1-inch barrier of subtitles, mind = blown.\",
+    \"trailerId\": \"5xH0R_46n44\",
+    \"tags\": [\"subtitles\", \"basement\", \"ramdon\", \"oscar\"]
+  }
+]
