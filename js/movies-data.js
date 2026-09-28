@@ -1,4 +1,4 @@
-﻿/**
+/**
  * <Div>ine - The Movie Database
  * Structured movie repository with comic ratings, funny captions, trailers & trivia
  */
@@ -66,8 +66,7 @@ const moviesDB = [
         verdict: "Shah Rukh Khan entering like a meteor strike.",
         trailerId: "COv52Qyctws",
         tags: ["srk", "metro", "rebellion", "masala"]
-    }
-];
+    },
     {
         id: "mad-max-fury-road",
         title: "Mad Max: Fury Road",
@@ -113,6 +112,7 @@ const moviesDB = [
         trailerId: "giXco2jaZ_4",
         tags: ["jets", "flying", "adrenaline", "danger"]
     },
+
     // ==========================================
     // COMEDY
     // ==========================================
@@ -206,6 +206,7 @@ const moviesDB = [
         trailerId: "4eaZ_48ZYog",
         tags: ["mclovin", "highschool", "party", "nostalgia"]
     },
+
     // ==========================================
     // ROMANCE
     // ==========================================
@@ -284,6 +285,7 @@ const moviesDB = [
         trailerId: "Hf_7k6Rsm4E",
         tags: ["train", "geet", "bhatinda", "wholesome"]
     },
+
     // ==========================================
     // HORROR
     // ==========================================
@@ -362,6 +364,7 @@ const moviesDB = [
         trailerId: "DzfpyUB60YY",
         tags: ["teacup", "sunkenplace", "suspense", "mindgames"]
     },
+
     // ==========================================
     // SUPERHERO
     // ==========================================
@@ -440,6 +443,7 @@ const moviesDB = [
         trailerId: "tg52up16eq0",
         tags: ["miles", "multiverse", "graffiti", "leapoffaith"]
     },
+
     // ==========================================
     // SCI-FI
     // ==========================================
@@ -503,6 +507,7 @@ const moviesDB = [
         trailerId: "Way9Dexny3w",
         tags: ["desert", "spice", "sandworm", "prophecy"]
     },
+
     // ==========================================
     // ANIMATION
     // ==========================================
@@ -551,6 +556,7 @@ const moviesDB = [
         trailerId: "xBgjf497w0w",
         tags: ["ogre", "donkey", "farfaraway", "hero"]
     },
+
     // ==========================================
     // THRILLER
     // ==========================================
@@ -601,7 +607,10 @@ const moviesDB = [
     }
 ];
 
-// Export to window
+// Export to window and module
 if (typeof window !== 'undefined') {
     window.moviesDB = moviesDB;
+}
+if (typeof module !== 'undefined') {
+    module.exports = moviesDB;
 }
