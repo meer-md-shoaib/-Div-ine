@@ -1,88 +1,86 @@
-🎬 Div-ine
+# 🎬 &lt;Div&gt;ine - The Pop-Art Comic Movie Universe
 
-Your next favorite movie is just a click away.
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-2EA44F?style=for-the-badge&logo=github&logoColor=white)](https://meer-md-shoaib.github.io/-Div-ine/)
+[![Made with Pop Art](https://img.shields.io/badge/Aesthetic-Comic%20Pop--Art-FFD700?style=for-the-badge&logo=css3&logoColor=black)](#)
+[![License: MIT](https://img.shields.io/badge/License-MIT-9b59b6?style=for-the-badge)](#)
 
-Div-ine is a movie suggestion website designed to help users discover movies based on their interests and preferences. Whether you're looking for something exciting, romantic, funny, or mysterious, Div-ine helps you find a movie worth watching.
+> *"We waste our time watching movies so you don't have to."*
 
-✨ Features
-🎥 Get personalized movie suggestions
-🔍 Search and discover movies
-🎭 Explore movies by genre
-⭐ View movie ratings and details
-📱 Responsive and user-friendly interface
-🎨 Clean and modern design
-⚡ Fast and simple movie discovery experience
-🖥️ Preview
+**&lt;Div&gt;ine** is a vibrant, comic-book pop-art styled movie discovery single-page web app. Designed with neo-brutalist borders, bold typography, witty one-liner reviews, in-page video trailer playback, persistent watchlist bookmarks, and genre/mood filters.
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-2EA44F?style=for-the-badge&logo=vercel&logoColor=white)](https://meer-md-shoaib.github.io/-Div-ine/)
+---
 
-🛠️ Tech Stack
-Frontend: HTML, CSS, JavaScript
-Backend: [Add your backend technology here]
-API: [Add movie API used, if any]
-Database: [Add database, if any]
-📂 Project Structure
-Div-ine/
-│
-├── index.html
-├── style.css
-│
-├── report
-└── README.md
+## ✨ Features & Enhancements
 
+- 🎭 **8 Rich Genres:** Action (Explosions), Comedy (Haha Funni), Romance (Lovey Dovey), Horror (Don't Look), Superhero (Spandex), Sci-Fi (Black Holes), Animation (Masterpieces), and Thriller (Mind Bending).
+- 🔍 **Live Instant Search:** Instant client-side search across titles, directors, actors, and comedy tags (Press `/` anywhere to focus).
+- 🎬 **Modal YouTube Trailer Player:** Watch official HD movie trailers directly within the site without being redirected or losing your place.
+- 🎯 **Interactive Mood Filter:** Match your exact vibe (*"Laugh till my ribs hurt"*, *"Adrenaline rush"*, *"Emotional tears"*, *"Mind twists"*).
+- ❤️ **Persistent Watchlist (Favorites):** Save your must-watch movies directly to your browser's `localStorage` with live counter badge.
+- 🎲 **"Surprise Me!" Movie Roulette:** Can't decide what to watch? Spin the wheel to get an instant random pick!
+- ℹ️ **Movie Quick-View Dossier:** Synopsis, director, runtime, release year, and the hilarious *Div-ine Verdict*.
+- 💬 **Interactive Feedback & Star Ratings:** Submit thoughts and reviews with funny instant replies and local history log.
+- ⚡ **Movie Trivia Rotator:** Auto-rotating funny cinema facts and trivia on the homepage.
+- 📱 **Fully Responsive:** Smooth navigation on desktop, tablet, and mobile with comic hamburger drawer.
 
-🚀 Getting Started
-1. Clone the repository
-git clone https://github.com/your-username/Div-ine.git
+---
 
-2. Navigate to the project folder
-cd Div-ine
+## 📂 Project Structure
 
-3. Open the project
+```text
+-Div-ine/
+├── index.html                   # Upgraded Single Page Application structure
+├── css/
+│   └── style.css                # Modular comic pop-art design system & tokens
+├── js/
+│   ├── movies-data.js           # Curated movie catalog with verdicts & trailers
+│   └── app.js                   # SPA router, search, filter, modals & watchlist
+├── data/
+│   └── movies.json              # Portable JSON movie dataset for external APIs
+├── assets/
+│   └── images/                  # Organized media assets & posters
+├── MOVIES_EXPANSION_GUIDE.md    # Architecture guide for scaling to 10,000+ movies
+└── README.md                    # Project documentation
+```
 
-If it is a simple HTML/CSS/JavaScript project, open:
+---
 
-index.html
+## 🚀 How to Run Locally
 
-in your browser.
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/meer-md-shoaib/-Div-ine.git
+   cd -Div-ine
+   ```
 
+2. **Open the project:**
+   Simply double-click `index.html` or serve with any local HTTP server:
+   ```bash
+   npx serve .
+   # or
+   python -m http.server 8000
+   ```
 
-🎯 How It Works
-Open the Div-ine website.
-Browse or search for movies.
-Select your preferred genre or movie category.
-Explore the suggested movies.
-Find something you like and start watching! 🍿
-🔮 Future Improvements
-🤖 AI-powered movie recommendations
-👤 User accounts and personalized profiles
-❤️ Favorite/watchlist functionality
-🎬 Movie trailers
-📊 Advanced filtering and sorting
-🌙 Dark/light mode
-⭐ User reviews and ratings
-📱 Progressive Web App support
-🤝 Contributing
+3. **Visit the Live Site:**
+   [https://meer-md-shoaib.github.io/-Div-ine/](https://meer-md-shoaib.github.io/-Div-ine/)
 
-Contributions are always welcome!
+---
 
-Fork the repository.
-Create a new branch:
-git checkout -b feature/your-feature
+## 👥 The &lt;Div&gt;ine Team (3CSE14)
 
-Make your changes.
-Commit your changes:
-git commit -m "Add your feature"
+- **Meer Mohammed Shoaib** — *The Leader & System Architect*
+- **Mohommed Adil** — *The Coder Extraordinaire*
+- **Nihaal R** — *The Soldier & Quality Assurance*
+- **Shreyas Bharadwaj** — *The Healer & Media Curator*
 
-Push to your branch:
-git push origin feature/your-feature
+🏛️ **Presidency University**, Bengaluru, Karnataka
 
-Open a Pull Request.
+---
 
-This project is created for educational and personal purposes.
+## 💡 Scaling & Adding More Movies
 
-Feel free to modify and improve it according to your needs.
-
-🎬 Div-ine
-
-Discover. Choose. Watch.
+Looking to expand to hundreds or thousands of movies? Check out [`MOVIES_EXPANSION_GUIDE.md`](./MOVIES_EXPANSION_GUIDE.md) for full blueprints on:
+1. **Free TMDB REST API** integration (800k+ movies, automated posters and trailers).
+2. **Google Sheets as a Headless CMS** (let classmates add movies without touching code).
+3. **Infinite Scroll with IntersectionObserver** for zero-latency loading on GitHub Pages.
+4. **AI-powered Sarcastic Verdict Generator** with the Google Gemini API.
