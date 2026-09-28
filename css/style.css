@@ -426,3 +426,202 @@ nav.comic-nav {
     transform: translate(2px, 2px);
     box-shadow: 3px 3px 0px #000;
 }
+/* ==========================================================================
+   Movie Cards, Filter Toolbar & Grid System
+   ========================================================================== */
+.movies-toolbar {
+    background: #1e272e;
+    border: var(--border-extra);
+    box-shadow: var(--shadow-hard);
+    padding: 18px 22px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.search-input-wrapper {
+    flex: 1 1 300px;
+    position: relative;
+}
+
+.search-input-wrapper input {
+    width: 100%;
+    padding: 12px 18px 12px 42px;
+    background: #ffffff;
+    border: var(--border-thick);
+    color: #000000;
+    font-size: 1rem;
+    font-weight: 600;
+    box-shadow: 3px 3px 0px #000;
+    border-radius: var(--radius-sm);
+    margin: 0;
+}
+
+.search-input-wrapper .search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    color: #000000;
+    pointer-events: none;
+}
+
+.filter-controls-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.comic-select {
+    padding: 10px 14px;
+    background: #ffffff;
+    border: var(--border-thick);
+    color: #000000;
+    font-family: var(--font-comic);
+    font-size: 1.05rem;
+    box-shadow: 3px 3px 0px #000;
+    cursor: pointer;
+}
+
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 28px;
+}
+
+.movie-card {
+    background: #ffffff;
+    color: #000000;
+    border: var(--border-extra);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    position: relative;
+    box-shadow: var(--shadow-hard);
+    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+}
+
+.movie-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-xl);
+}
+
+.movie-poster-wrap {
+    position: relative;
+    width: 100%;
+    height: 360px;
+    background: #000000;
+    overflow: hidden;
+    border-bottom: var(--border-thick);
+}
+
+.movie-poster-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.movie-card:hover .movie-poster-wrap img {
+    transform: scale(1.05);
+}
+
+.movie-rating-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: var(--primary);
+    color: #000000;
+    font-family: var(--font-comic);
+    font-size: 1rem;
+    padding: 4px 10px;
+    border: 2px solid #000;
+    box-shadow: 2px 2px 0px #000;
+    z-index: 2;
+}
+
+.movie-year-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #000000;
+    color: #ffffff;
+    font-family: var(--font-comic);
+    font-size: 0.95rem;
+    padding: 3px 8px;
+    border: 2px solid #fff;
+    box-shadow: 2px 2px 0px #000;
+    z-index: 2;
+}
+
+.watchlist-btn {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    background: #ffffff;
+    border: 2px solid #000;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 3px 3px 0px #000;
+    transition: all 0.15s ease;
+    z-index: 5;
+}
+
+.watchlist-btn:hover {
+    transform: scale(1.15);
+    background: var(--accent-red);
+    color: #ffffff;
+}
+
+.watchlist-btn.bookmarked {
+    background: var(--accent-red);
+    color: #ffffff;
+}
+
+.movie-info {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.movie-info h3 {
+    font-size: 1.4rem;
+    margin-bottom: 6px;
+    color: #000000;
+    letter-spacing: 1px;
+}
+
+.funny-caption {
+    font-size: 0.92rem;
+    color: var(--secondary);
+    font-style: italic;
+    font-weight: 700;
+    margin-bottom: 15px;
+    display: block;
+    line-height: 1.35;
+    flex: 1;
+}
+
+.movie-card-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: auto;
+}
+
+.movie-card-actions button,
+.movie-card-actions a {
+    flex: 1;
+}
