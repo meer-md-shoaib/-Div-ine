@@ -232,3 +232,75 @@ function renderMoviesList() {
         container.innerHTML = list.map(m => createMovieCardHTML(m)).join('');
     }
 }
+/* ==========================================================================
+   Modals: Trailer Player & Movie Details Controller
+   ========================================================================== */
+
+function openTrailerModal(trailerId, movieTitle) {
+    const modal = document.getElementById('trailer-modal');
+    const titleEl = document.getElementById('trailer-modal-title');
+    const container = document.getElementById('trailer-video-container');
+    
+    if (titleEl) titleEl.innerText = ${movieTitle} - Official Trailer;
+    if (container) {
+        container.innerHTML = 
+            <iframe 
+                src=\"https://www.youtube.com/embed/?autoplay=1&rel=0\" 
+                title=\" Trailer\" 
+                allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" 
+                allowfullscreen>
+            </iframe>
+        ;
+    }
+    if (modal) modal.classList.add('active');
+}
+
+function closeTrailerModal() {
+    const modal = document.getElementById('trailer-modal');
+    const container = document.getElementById('trailer-video-container');
+    if (container) container.innerHTML = ''; // Stops playback immediately
+    if (modal) modal.classList.remove('active');
+}
+
+function openDetailModal(movieId) {
+    const movie = moviesDB.find(m => m.id === movieId);
+    if (!movie) return;
+
+    const modal = document.getElementById('detail-modal');
+    const titleEl = document.getElementById('detail-modal-title');
+    const bodyEl = document.getElementById('detail-modal-body');
+    
+    if (titleEl) titleEl.innerText = movie.title;
+    if (bodyEl) {
+        bodyEl.innerHTML = 
+            <div class=\"movie-modal-grid\">
+                <img src=\"\" alt=\"\" class=\"modal-poster\" onerror=\"this.onerror=null; this.src='https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=500';\">
+                <div class=\"modal-info-column\">
+                    <div>
+                        <span class=\"modal-pill-tag\"></span>
+                        <span class=\"modal-pill-tag\" style=\"background: #000;\">📅 </span>
+                        <span class=\"modal-pill-tag\" style=\"background: var(--primary); color: #000;\">⭐ /10</span>
+                        <span class=\"modal-pill-tag\" style=\"background: #34495e;\">⏱️ </span>
+                    </div>
+                    <p style=\"font-size: 1.05rem; line-height: 1.6; margin-top: 8px;\"><strong>Synopsis:</strong> </p>
+                    <p><strong>Director:</strong> </p>
+                    <div class=\"verdict-box\">
+                        <strong>Div-ine Verdict:</strong> \"\"
+                    </div>
+                    <div style=\"margin-top: 15px; display: flex; gap: 10px;\">
+                        <button class=\"btn-comic\" onclick=\"closeDetailModal(); openTrailerModal('', '')\">▶ Watch Trailer</button>
+                        <button class=\"btn-comic btn-secondary\" onclick=\"toggleWatchlist('', event)\">
+                            
+                        </button>
+                    </div>
+                </div>
+            </div>
+        ;
+    }
+    if (modal) modal.classList.add('active');
+}
+
+function closeDetailModal() {
+    const modal = document.getElementById('detail-modal');
+    if (modal) modal.classList.remove('active');
+}
