@@ -503,3 +503,105 @@ const moviesDB = [
         trailerId: "Way9Dexny3w",
         tags: ["desert", "spice", "sandworm", "prophecy"]
     },
+    // ==========================================
+    // ANIMATION
+    // ==========================================
+    {
+        id: "coco",
+        title: "Coco",
+        genre: "Animation",
+        year: 2017,
+        rating: 8.4,
+        runtime: "105 min",
+        director: "Lee Unkrich",
+        img: "https://image.tmdb.org/t/p/w500/gGEqqioYV7LAwo2T8Ki6964892V.jpg",
+        caption: "Remember me... and remember to hydrate after crying rivers.",
+        synopsis: "Aspiring musician Miguel, confronted with his family's ancestral ban on music, enters the Land of the Dead to find his great-great-grandfather.",
+        verdict: "Singing to Mama Coco is emotional warfare.",
+        trailerId: "Rvr68u6k5sI",
+        tags: ["guitar", "family", "marigold", "crying"]
+    },
+    {
+        id: "spirited-away",
+        title: "Spirited Away",
+        genre: "Animation",
+        year: 2001,
+        rating: 8.6,
+        runtime: "125 min",
+        director: "Hayao Miyazaki",
+        img: "https://image.tmdb.org/t/p/w500/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg",
+        caption: "Don't eat random buffet food or you will literally turn into a pig.",
+        synopsis: "During her family's move to the suburbs, a sullen 10-year-old girl wanders into a world ruled by gods, witches, and spirits, where humans are changed into beasts.",
+        verdict: "Studio Ghibli's crowning magical masterwork.",
+        trailerId: "ByXuk9QqQkk",
+        tags: ["ghibli", "spirits", "noface", "magic"]
+    },
+    {
+        id: "shrek-2",
+        title: "Shrek 2",
+        genre: "Animation",
+        year: 2004,
+        rating: 7.3,
+        runtime: "93 min",
+        director: "Andrew Adamson",
+        img: "https://image.tmdb.org/t/p/w500/2yYP0PQjG8zVqcPdpQxTkZr3vm0.jpg",
+        caption: "I Need a Hero playing while giant gingerbread man storms the castle.",
+        synopsis: "Shrek and Fiona travel to the Kingdom of Far Far Away, where Fiona's parents are King and Queen, to celebrate their marriage, but find little welcome.",
+        verdict: "Peak cinema. Fairy Godmother's performance was Grammy worthy.",
+        trailerId: "xBgjf497w0w",
+        tags: ["ogre", "donkey", "farfaraway", "hero"]
+    },
+    // ==========================================
+    // THRILLER
+    // ==========================================
+    {
+        id: "parasite",
+        title: "Parasite",
+        genre: "Thriller",
+        year: 2019,
+        rating: 8.5,
+        runtime: "132 min",
+        director: "Bong Joon Ho",
+        img: "https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg",
+        caption: "Jessica, Only child, Illinois, Chicago. The ultimate hustle gone wild.",
+        synopsis: "Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.",
+        verdict: "Once you overcome the 1-inch barrier of subtitles, mind = blown.",
+        trailerId: "5xH0R_46n44",
+        tags: ["subtitles", "basement", "ramdon", "oscar"]
+    },
+    {
+        id: "andhadhun",
+        title: "Andhadhun",
+        genre: "Thriller",
+        year: 2018,
+        rating: 8.2,
+        runtime: "139 min",
+        director: "Sriram Raghavan",
+        img: "https://image.tmdb.org/t/p/w500/r1XgQ4hQZqj9iK9L1xK19q1xK19.jpg",
+        caption: "Pretending to be blind until you witness a murder in a bathroom.",
+        synopsis: "A series of mysterious events change the life of a blind pianist, who must now report a crime that he should not technically know of.",
+        verdict: "Tabu pushing boundaries, piano tunes, and a blind rabbit.",
+        trailerId: "2iVYI99VGaw",
+        tags: ["piano", "blind", "murder", "twists"]
+    },
+    {
+        id: "knives-out",
+        title: "Knives Out",
+        genre: "Thriller",
+        year: 2019,
+        rating: 7.9,
+        runtime: "130 min",
+        director: "Rian Johnson",
+        img: "https://image.tmdb.org/t/p/w500/pThyQovXQrw2m0s9x82twj48Jq4.jpg",
+        caption: "Benoit Blanc's southern drawl dismantling trust fund vultures.",
+        synopsis: "A detective investigates the death of a patriarch of an eccentric, combative family.",
+        verdict: "Cozy cable-knit sweater mystery with delicious twists.",
+        trailerId: "qGqiHJTsRfs",
+        tags: ["whodunit", "donut", "mansion", "sweater"]
+    }
+];
+
+// Export to window
+if (typeof window !== 'undefined') {
+    window.moviesDB = moviesDB;
+}
