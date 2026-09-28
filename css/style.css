@@ -1,0 +1,73 @@
+/* ==========================================================================
+   <Div>ine - The Pop-Art Comic Movie Experience
+   Core Design System, Variables & Base Reset
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Poppins:wght@300;400;600;700;800&family=Comic+Neue:ital,wght@0,700;1,700&display=swap');
+
+:root {
+    /* Pop-Art Signature Palette */
+    --primary: #FFD700;        /* Pop Art Electric Yellow */
+    --primary-hover: #ffe44d;
+    --secondary: #9b59b6;      /* Vivid Purple */
+    --secondary-hover: #b07cc6;
+    --accent-red: #ff3838;     /* Action Red */
+    --accent-blue: #17c0eb;    /* Comic Cyan */
+    --accent-green: #3ae374;   /* Pop Lime Green */
+    --accent-orange: #ff9f1a;  /* Comic Orange */
+    --dark: #1e272e;          /* Rich Ink Black/Slate */
+    --darker: #13191f;        /* Deep Background */
+    --light: #f5f6fa;         /* Comic Paper White */
+    --gray: #718093;
+    
+    /* Neo-Brutalism Shadows & Borders */
+    --border-thick: 3px solid #000000;
+    --border-extra: 4px solid #000000;
+    --shadow-hard: 5px 5px 0px #000000;
+    --shadow-lg: 8px 8px 0px #000000;
+    --shadow-xl: 12px 12px 0px #000000;
+    --shadow-hover: 10px 10px 0px var(--secondary);
+    --shadow-yellow: 8px 8px 0px var(--primary);
+    
+    /* Typography */
+    --font-comic: 'Bangers', cursive;
+    --font-fun: 'Comic Neue', cursive;
+    --font-body: 'Poppins', sans-serif;
+    
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--darker);
+    background-image: 
+        radial-gradient(#2f3640 10%, transparent 11%),
+        radial-gradient(#2f3640 10%, transparent 11%);
+    background-size: 24px 24px;
+    background-position: 0 0, 12px 12px;
+    color: var(--light);
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Comic Book Headings */
+h1, h2, h3, h4, .logo, .comic-text {
+    font-family: var(--font-comic);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0px #000000;
+}
