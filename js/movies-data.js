@@ -440,3 +440,66 @@ const moviesDB = [
         trailerId: "tg52up16eq0",
         tags: ["miles", "multiverse", "graffiti", "leapoffaith"]
     },
+    // ==========================================
+    // SCI-FI
+    // ==========================================
+    {
+        id: "interstellar",
+        title: "Interstellar",
+        genre: "Sci-Fi",
+        year: 2014,
+        rating: 8.7,
+        runtime: "169 min",
+        director: "Christopher Nolan",
+        img: "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
+        caption: "Matthew McConaughey crying in a 5th-dimensional bookshelf.",
+        synopsis: "When Earth becomes uninhabitable in the future, a farmer and ex-NASA pilot, Joseph Cooper, is tasked to pilot a spacecraft, along with a team of researchers, to find a new planet for humans.",
+        verdict: "Love transcends time and gravity, and Hans Zimmer's organ blares.",
+        trailerId: "zSWdZVtXT7E",
+        tags: ["blackhole", "space", "tars", "docking"]
+    },
+    {
+        id: "the-matrix",
+        title: "The Matrix",
+        genre: "Sci-Fi",
+        year: 1999,
+        rating: 8.7,
+        runtime: "136 min",
+        director: "Lana & Lilly Wachowski",
+        img: "https://image.tmdb.org/t/p/w500/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg",
+        caption: "Take the red pill, dodge bullets in slow motion, question reality.",
+        synopsis: "When a beautiful stranger leads computer hacker Neo to a forbidding underworld, he discovers the shocking truth--the life he knows is the elaborate deception of an evil cyber-intelligence.",
+        verdict: "There is no spoon. Leather trench coats never left style.",
+        trailerId: "vKQi3bBA1y8",
+        tags: ["neo", "redpill", "bullet-dodge", "cyber"]
+    },
+    {
+        id: "inception",
+        title: "Inception",
+        genre: "Sci-Fi",
+        year: 2010,
+        rating: 8.8,
+        runtime: "148 min",
+        director: "Christopher Nolan",
+        img: "https://image.tmdb.org/t/p/w500/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg",
+        caption: "A dream inside a dream inside a falling van while a top spins.",
+        synopsis: "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
+        verdict: "BWAAAAAH horn sound effect echoing for the rest of your life.",
+        trailerId: "YoHD9XEInc0",
+        tags: ["dreams", "totem", "gravity", "heist"]
+    },
+    {
+        id: "dune-part-two",
+        title: "Dune: Part Two",
+        genre: "Sci-Fi",
+        year: 2024,
+        rating: 8.6,
+        runtime: "166 min",
+        director: "Denis Villeneuve",
+        img: "https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg",
+        caption: "Riding 400-meter sand worms while screaming LISAN AL GAIB!",
+        synopsis: "Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family.",
+        verdict: "Cinema that vibrates your teeth and makes you thirsty for water.",
+        trailerId: "Way9Dexny3w",
+        tags: ["desert", "spice", "sandworm", "prophecy"]
+    },
