@@ -126,3 +126,109 @@ function createMovieCardHTML(movie) {
         </div>
     ;
 }
+/* ==========================================================================
+   Filter, Search & Sorting Logic
+   ========================================================================== */
+
+function filterMovies(genre = 'All') {
+    AppState.selectedGenre = genre;
+    AppState.searchQuery = '';
+    
+    // Clear search bar
+    const searchInput = document.getElementById('movie-search-input');
+    if (searchInput) searchInput.value = '';
+
+    renderMoviesList();
+    showPage('movies');
+}
+
+function filterByMood(mood) {
+    showPage('movies');
+    const container = document.getElementById('movie-container');
+    const header = document.getElementById('movie-header');
+    
+    let filtered = [];
+    let moodTitle = \"Mood: \" + mood;
+
+    if (mood === 'laugh') {
+        filtered = moviesDB.filter(m => m.genre === 'Comedy');
+        moodTitle = \"Laugh Until Your Ribs Hurt 😂\";
+    } else if (mood === 'adrenaline') {
+        filtered = moviesDB.filter(m => m.genre === 'Action' || m.genre === 'Superhero');
+        moodTitle = \"High-Octane Adrenaline Rush 💥\";
+    } else if (mood === 'cry') {
+        filtered = moviesDB.filter(m => m.genre === 'Romance' || m.id === 'coco');
+        moodTitle = \"Emotional Tears & Tissues 😭\";
+    } else if (mood === 'mindblown') {
+        filtered = moviesDB.filter(m => m.genre === 'Sci-Fi' || m.genre === 'Thriller');
+        moodTitle = \"Mind-Bending Twists 🤯\";
+    } else if (mood === 'spooky') {
+        filtered = moviesDB.filter(m => m.genre === 'Horror');
+        moodTitle = \"Spooky Don't Look Behind You 👻\";
+    }
+
+    if (header) header.innerText = moodTitle;
+    if (container) {
+        container.innerHTML = filtered.map(m => createMovieCardHTML(m)).join('');
+    }
+}
+
+function handleSearch(query) {
+    AppState.searchQuery = query.toLowerCase().trim();
+    renderMoviesList();
+}
+
+function handleSort(sortOption) {
+    AppState.sortBy = sortOption;
+    renderMoviesList();
+}
+
+function renderMoviesList() {
+    const container = document.getElementById('movie-container');
+    const header = document.getElementById('movie-header');
+    if (!container) return;
+
+    let list = [...moviesDB];
+
+    // 1. Genre Filter
+    if (AppState.selectedGenre && AppState.selectedGenre !== 'All') {
+        list = list.filter(m => m.genre === AppState.selectedGenre);
+        if (header) header.innerText = ${getGenreEmoji(AppState.selectedGenre)}  Movies;
+    } else {
+        if (header) header.innerText = \"🍿 All Movies Collection\";
+    }
+
+    // 2. Search Query Filter
+    if (AppState.searchQuery) {
+        list = list.filter(m => 
+            m.title.toLowerCase().includes(AppState.searchQuery) ||
+            m.caption.toLowerCase().includes(AppState.searchQuery) ||
+            m.director.toLowerCase().includes(AppState.searchQuery) ||
+            (m.tags && m.tags.some(t => t.toLowerCase().includes(AppState.searchQuery)))
+        );
+        if (header) header.innerText = 🔍 Results for \"\" ();
+    }
+
+    // 3. Sorting
+    if (AppState.sortBy === 'rating-desc') {
+        list.sort((a, b) => b.rating - a.rating);
+    } else if (AppState.sortBy === 'year-desc') {
+        list.sort((a, b) => b.year - a.year);
+    } else if (AppState.sortBy === 'year-asc') {
+        list.sort((a, b) => a.year - b.year);
+    } else if (AppState.sortBy === 'title-asc') {
+        list.sort((a, b) => a.title.localeCompare(b.title));
+    }
+
+    if (list.length === 0) {
+        container.innerHTML = 
+            <div style=\"grid-column: 1 / -1; text-align: center; padding: 60px 20px; background: #1e272e; border: 3px solid #000; box-shadow: 6px 6px 0px #000;\">
+                <h3 style=\"font-size: 2.2rem; color: var(--primary); margin-bottom: 10px;\">NO MOVIES FOUND!</h3>
+                <p style=\"font-size: 1.1rem; color: #fff; margin-bottom: 20px;\">Even our infinite popcorn couldn't locate that. Try another keyword or genre!</p>
+                <button class=\"btn-comic\" onclick=\"filterMovies('All')\">Reset Filters</button>
+            </div>
+        ;
+    } else {
+        container.innerHTML = list.map(m => createMovieCardHTML(m)).join('');
+    }
+}
