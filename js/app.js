@@ -1,6 +1,6 @@
-﻿/**
+/**
  * <Div>ine - Main Interactive Application Logic
- * Single Page App Navigation, State Store & Utilities
+ * Single Page App Navigation, State Store, Search, Filter, Modals & Watchlist
  */
 
 const AppState = {
@@ -59,7 +59,7 @@ function showToast(message, emoji = '🍿') {
         toast.className = 'comic-toast';
         document.body.appendChild(toast);
     }
-    toast.innerHTML = <span style=\"font-size:1.4rem;\"></span> <span></span>;
+    toast.innerHTML = `<span style="font-size:1.4rem;">${emoji}</span> <span>${message}</span>`;
     toast.classList.add('show');
     clearTimeout(toast._timeout);
     toast._timeout = setTimeout(() => {
@@ -67,16 +67,7 @@ function showToast(message, emoji = '🍿') {
     }, 2800);
 }
 
-// Initialize on DOM load
-window.addEventListener('DOMContentLoaded', () => {
-    updateWatchlistBadge();
-    updateGenreCounts();
-    initEventListeners();
-});
-/* ==========================================================================
-   Movie Renderer & Card Generators
-   ========================================================================== */
-
+// Helper: Genre Emoji
 function getGenreEmoji(genre) {
     const map = {
         'Action': '💥',
@@ -92,44 +83,44 @@ function getGenreEmoji(genre) {
     return map[genre] || '🎬';
 }
 
+// Update Genre Badges & Total Count
 function updateGenreCounts() {
     const genres = ['Action', 'Comedy', 'Romance', 'Horror', 'Superhero', 'Sci-Fi', 'Animation', 'Thriller'];
     genres.forEach(g => {
         const count = moviesDB.filter(m => m.genre === g).length;
-        const el = document.getElementById(count-);
+        const el = document.getElementById(`count-${g.toLowerCase()}`);
         if (el) el.innerText = count;
     });
     const totalEl = document.getElementById('total-movies-count');
     if (totalEl) totalEl.innerText = moviesDB.length;
 }
 
+// Generate Movie Card HTML
 function createMovieCardHTML(movie) {
     const isBookmarked = AppState.watchlist.some(item => item.id === movie.id);
-    return 
-        <div class=\"movie-card\" data-id=\"\">
-            <div class=\"movie-poster-wrap\">
-                <img src=\"\" alt=\"\" loading=\"lazy\" onerror=\"this.onerror=null; this.src='https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=500';\">
-                <div class=\"movie-rating-badge\">⭐ </div>
-                <div class=\"movie-year-badge\"></div>
-                <button class=\"watchlist-btn \" title=\"\" onclick=\"toggleWatchlist('', event)\">
-                    
+    return `
+        <div class="movie-card" data-id="${movie.id}">
+            <div class="movie-poster-wrap">
+                <img src="${movie.img}" alt="${movie.title}" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=500';">
+                <div class="movie-rating-badge">⭐ ${movie.rating}</div>
+                <div class="movie-year-badge">${movie.year}</div>
+                <button class="watchlist-btn ${isBookmarked ? 'bookmarked' : ''}" title="${isBookmarked ? 'Remove from Watchlist' : 'Add to Watchlist'}" onclick="toggleWatchlist('${movie.id}', event)">
+                    ${isBookmarked ? '❤️' : '🤍'}
                 </button>
             </div>
-            <div class=\"movie-info\">
-                <h3></h3>
-                <span class=\"funny-caption\">\"\"</span>
-                <div class=\"movie-card-actions\">
-                    <button class=\"btn-comic btn-sm\" onclick=\"openTrailerModal('', '')\">▶ Trailer</button>
-                    <button class=\"btn-comic btn-sm btn-secondary\" onclick=\"openDetailModal('')\">ℹ Info</button>
+            <div class="movie-info">
+                <h3>${movie.title}</h3>
+                <span class="funny-caption">"${movie.caption}"</span>
+                <div class="movie-card-actions">
+                    <button class="btn-comic btn-sm" onclick="openTrailerModal('${movie.trailerId}', '${movie.title.replace(/'/g, "\\'")}')">▶ Trailer</button>
+                    <button class="btn-comic btn-sm btn-secondary" onclick="openDetailModal('${movie.id}')">ℹ Info</button>
                 </div>
             </div>
         </div>
-    ;
+    `;
 }
-/* ==========================================================================
-   Filter, Search & Sorting Logic
-   ========================================================================== */
 
+// Filter Movies by Genre
 function filterMovies(genre = 'All') {
     AppState.selectedGenre = genre;
     AppState.searchQuery = '';
@@ -142,29 +133,30 @@ function filterMovies(genre = 'All') {
     showPage('movies');
 }
 
+// Filter Movies by Mood
 function filterByMood(mood) {
     showPage('movies');
     const container = document.getElementById('movie-container');
     const header = document.getElementById('movie-header');
     
     let filtered = [];
-    let moodTitle = \"Mood: \" + mood;
+    let moodTitle = "Mood: " + mood;
 
     if (mood === 'laugh') {
         filtered = moviesDB.filter(m => m.genre === 'Comedy');
-        moodTitle = \"Laugh Until Your Ribs Hurt 😂\";
+        moodTitle = "Laugh Until Your Ribs Hurt 😂";
     } else if (mood === 'adrenaline') {
         filtered = moviesDB.filter(m => m.genre === 'Action' || m.genre === 'Superhero');
-        moodTitle = \"High-Octane Adrenaline Rush 💥\";
+        moodTitle = "High-Octane Adrenaline Rush 💥";
     } else if (mood === 'cry') {
         filtered = moviesDB.filter(m => m.genre === 'Romance' || m.id === 'coco');
-        moodTitle = \"Emotional Tears & Tissues 😭\";
+        moodTitle = "Emotional Tears & Tissues 😭";
     } else if (mood === 'mindblown') {
         filtered = moviesDB.filter(m => m.genre === 'Sci-Fi' || m.genre === 'Thriller');
-        moodTitle = \"Mind-Bending Twists 🤯\";
+        moodTitle = "Mind-Bending Twists 🤯";
     } else if (mood === 'spooky') {
         filtered = moviesDB.filter(m => m.genre === 'Horror');
-        moodTitle = \"Spooky Don't Look Behind You 👻\";
+        moodTitle = "Spooky Don't Look Behind You 👻";
     }
 
     if (header) header.innerText = moodTitle;
@@ -173,6 +165,7 @@ function filterByMood(mood) {
     }
 }
 
+// Search & Sort Handlers
 function handleSearch(query) {
     AppState.searchQuery = query.toLowerCase().trim();
     renderMoviesList();
@@ -183,6 +176,7 @@ function handleSort(sortOption) {
     renderMoviesList();
 }
 
+// Render Movies Catalog
 function renderMoviesList() {
     const container = document.getElementById('movie-container');
     const header = document.getElementById('movie-header');
@@ -193,9 +187,9 @@ function renderMoviesList() {
     // 1. Genre Filter
     if (AppState.selectedGenre && AppState.selectedGenre !== 'All') {
         list = list.filter(m => m.genre === AppState.selectedGenre);
-        if (header) header.innerText = ${getGenreEmoji(AppState.selectedGenre)}  Movies;
+        if (header) header.innerText = `${getGenreEmoji(AppState.selectedGenre)} ${AppState.selectedGenre} Movies`;
     } else {
-        if (header) header.innerText = \"🍿 All Movies Collection\";
+        if (header) header.innerText = "🍿 All Movies Collection";
     }
 
     // 2. Search Query Filter
@@ -206,7 +200,7 @@ function renderMoviesList() {
             m.director.toLowerCase().includes(AppState.searchQuery) ||
             (m.tags && m.tags.some(t => t.toLowerCase().includes(AppState.searchQuery)))
         );
-        if (header) header.innerText = 🔍 Results for \"\" ();
+        if (header) header.innerText = `🔍 Results for "${AppState.searchQuery}" (${list.length})`;
     }
 
     // 3. Sorting
@@ -221,36 +215,34 @@ function renderMoviesList() {
     }
 
     if (list.length === 0) {
-        container.innerHTML = 
-            <div style=\"grid-column: 1 / -1; text-align: center; padding: 60px 20px; background: #1e272e; border: 3px solid #000; box-shadow: 6px 6px 0px #000;\">
-                <h3 style=\"font-size: 2.2rem; color: var(--primary); margin-bottom: 10px;\">NO MOVIES FOUND!</h3>
-                <p style=\"font-size: 1.1rem; color: #fff; margin-bottom: 20px;\">Even our infinite popcorn couldn't locate that. Try another keyword or genre!</p>
-                <button class=\"btn-comic\" onclick=\"filterMovies('All')\">Reset Filters</button>
+        container.innerHTML = `
+            <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; background: #1e272e; border: 3px solid #000; box-shadow: 6px 6px 0px #000;">
+                <h3 style="font-size: 2.2rem; color: var(--primary); margin-bottom: 10px;">NO MOVIES FOUND!</h3>
+                <p style="font-size: 1.1rem; color: #fff; margin-bottom: 20px;">Even our infinite popcorn couldn't locate that. Try another keyword or genre!</p>
+                <button class="btn-comic" onclick="filterMovies('All')">Reset Filters</button>
             </div>
-        ;
+        `;
     } else {
         container.innerHTML = list.map(m => createMovieCardHTML(m)).join('');
     }
 }
-/* ==========================================================================
-   Modals: Trailer Player & Movie Details Controller
-   ========================================================================== */
 
+// Modals: Trailer Player & Movie Details
 function openTrailerModal(trailerId, movieTitle) {
     const modal = document.getElementById('trailer-modal');
     const titleEl = document.getElementById('trailer-modal-title');
     const container = document.getElementById('trailer-video-container');
     
-    if (titleEl) titleEl.innerText = ${movieTitle} - Official Trailer;
+    if (titleEl) titleEl.innerText = `${movieTitle} - Official Trailer`;
     if (container) {
-        container.innerHTML = 
+        container.innerHTML = `
             <iframe 
-                src=\"https://www.youtube.com/embed/?autoplay=1&rel=0\" 
-                title=\" Trailer\" 
-                allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" 
+                src="https://www.youtube.com/embed/${trailerId}?autoplay=1&rel=0" 
+                title="${movieTitle} Trailer" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                 allowfullscreen>
             </iframe>
-        ;
+        `;
     }
     if (modal) modal.classList.add('active');
 }
@@ -258,7 +250,7 @@ function openTrailerModal(trailerId, movieTitle) {
 function closeTrailerModal() {
     const modal = document.getElementById('trailer-modal');
     const container = document.getElementById('trailer-video-container');
-    if (container) container.innerHTML = ''; // Stops playback immediately
+    if (container) container.innerHTML = ''; // Stops video playback immediately
     if (modal) modal.classList.remove('active');
 }
 
@@ -272,30 +264,30 @@ function openDetailModal(movieId) {
     
     if (titleEl) titleEl.innerText = movie.title;
     if (bodyEl) {
-        bodyEl.innerHTML = 
-            <div class=\"movie-modal-grid\">
-                <img src=\"\" alt=\"\" class=\"modal-poster\" onerror=\"this.onerror=null; this.src='https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=500';\">
-                <div class=\"modal-info-column\">
+        bodyEl.innerHTML = `
+            <div class="movie-modal-grid">
+                <img src="${movie.img}" alt="${movie.title}" class="modal-poster" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=500';">
+                <div class="modal-info-column">
                     <div>
-                        <span class=\"modal-pill-tag\"></span>
-                        <span class=\"modal-pill-tag\" style=\"background: #000;\">📅 </span>
-                        <span class=\"modal-pill-tag\" style=\"background: var(--primary); color: #000;\">⭐ /10</span>
-                        <span class=\"modal-pill-tag\" style=\"background: #34495e;\">⏱️ </span>
+                        <span class="modal-pill-tag">${movie.genre}</span>
+                        <span class="modal-pill-tag" style="background: #000;">📅 ${movie.year}</span>
+                        <span class="modal-pill-tag" style="background: var(--primary); color: #000;">⭐ ${movie.rating}/10</span>
+                        <span class="modal-pill-tag" style="background: #34495e;">⏱️ ${movie.runtime}</span>
                     </div>
-                    <p style=\"font-size: 1.05rem; line-height: 1.6; margin-top: 8px;\"><strong>Synopsis:</strong> </p>
-                    <p><strong>Director:</strong> </p>
-                    <div class=\"verdict-box\">
-                        <strong>Div-ine Verdict:</strong> \"\"
+                    <p style="font-size: 1.05rem; line-height: 1.6; margin-top: 8px;"><strong>Synopsis:</strong> ${movie.synopsis}</p>
+                    <p><strong>Director:</strong> ${movie.director}</p>
+                    <div class="verdict-box">
+                        <strong>Div-ine Verdict:</strong> "${movie.verdict}"
                     </div>
-                    <div style=\"margin-top: 15px; display: flex; gap: 10px;\">
-                        <button class=\"btn-comic\" onclick=\"closeDetailModal(); openTrailerModal('', '')\">▶ Watch Trailer</button>
-                        <button class=\"btn-comic btn-secondary\" onclick=\"toggleWatchlist('', event)\">
-                            
+                    <div style="margin-top: 15px; display: flex; gap: 10px;">
+                        <button class="btn-comic" onclick="closeDetailModal(); openTrailerModal('${movie.trailerId}', '${movie.title.replace(/'/g, "\\'")}')">▶ Watch Trailer</button>
+                        <button class="btn-comic btn-secondary" onclick="toggleWatchlist('${movie.id}', event)">
+                            ${AppState.watchlist.some(item => item.id === movie.id) ? '❤️ In Watchlist' : '🤍 Add to Watchlist'}
                         </button>
                     </div>
                 </div>
             </div>
-        ;
+        `;
     }
     if (modal) modal.classList.add('active');
 }
@@ -304,10 +296,8 @@ function closeDetailModal() {
     const modal = document.getElementById('detail-modal');
     if (modal) modal.classList.remove('active');
 }
-/* ==========================================================================
-   Watchlist (Favorites) LocalStorage Manager
-   ========================================================================== */
 
+// Watchlist (Favorites) LocalStorage Manager
 function toggleWatchlist(movieId, event) {
     if (event) event.stopPropagation();
     
@@ -318,10 +308,10 @@ function toggleWatchlist(movieId, event) {
 
     if (index > -1) {
         AppState.watchlist.splice(index, 1);
-        showToast(Removed \"\" from your Watchlist!, '💔');
+        showToast(`Removed "${movie.title}" from your Watchlist!`, '💔');
     } else {
         AppState.watchlist.push(movie);
-        showToast(Added \"\" to your Watchlist!, '🍿');
+        showToast(`Added "${movie.title}" to your Watchlist!`, '🍿');
     }
 
     localStorage.setItem('divine_watchlist', JSON.stringify(AppState.watchlist));
@@ -350,30 +340,28 @@ function renderWatchlist() {
     if (!container) return;
 
     if (AppState.watchlist.length === 0) {
-        container.innerHTML = 
-            <div style=\"grid-column: 1 / -1; text-align: center; padding: 60px 20px; background: #1e272e; border: 3px solid #000; box-shadow: 6px 6px 0px #000;\">
-                <h3 style=\"font-size: 2.2rem; color: var(--primary); margin-bottom: 10px;\">YOUR WATCHLIST IS EMPTY!</h3>
-                <p style=\"font-size: 1.1rem; color: #fff; margin-bottom: 20px;\">Click the heart (❤️) on any movie to hoard it here for lazy weekends.</p>
-                <button class=\"btn-comic\" onclick=\"showPage('genre')\">Browse Genres</button>
+        container.innerHTML = `
+            <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; background: #1e272e; border: 3px solid #000; box-shadow: 6px 6px 0px #000;">
+                <h3 style="font-size: 2.2rem; color: var(--primary); margin-bottom: 10px;">YOUR WATCHLIST IS EMPTY!</h3>
+                <p style="font-size: 1.1rem; color: #fff; margin-bottom: 20px;">Click the heart (❤️) on any movie to hoard it here for lazy weekends.</p>
+                <button class="btn-comic" onclick="showPage('genre')">Browse Genres</button>
             </div>
-        ;
+        `;
     } else {
         container.innerHTML = AppState.watchlist.map(m => createMovieCardHTML(m)).join('');
     }
 }
-/* ==========================================================================
-   Surprise Me / Comic Movie Roulette & Trivia
-   ========================================================================== */
 
+// Surprise Me & Trivia
 const funFacts = [
-    \"Watching 3 hours of movies burns roughly 0 calories, but fills 100% of your soul.\",
-    \"In The Dark Knight, Heath Ledger designed the Joker makeup himself using drugstore cosmetics.\",
-    \"The sound of the T-Rex in Jurassic Park was made using baby elephants, tigers, and alligators.\",
-    \"The iconic 'I am your father' line was kept secret from even the actors until post-production.\",
-    \"The horse head in The Godfather was completely real. The actor's scream was 100% authentic shock.\",
-    \"Shah Rukh Khan shot the train entrance in Dilwale Dulhania Le Jayenge in only two takes.\",
-    \"In Titanic, the drawing of Rose was actually sketched by director James Cameron himself!\",
-    \"Interstellar's black hole simulation was so accurate that physicists published 3 scientific papers from it.\"
+    "Watching 3 hours of movies burns roughly 0 calories, but fills 100% of your soul.",
+    "In The Dark Knight, Heath Ledger designed the Joker makeup himself using drugstore cosmetics.",
+    "The sound of the T-Rex in Jurassic Park was made using baby elephants, tigers, and alligators.",
+    "The iconic 'I am your father' line was kept secret from even the actors until post-production.",
+    "The horse head in The Godfather was completely real. The actor's scream was 100% authentic shock.",
+    "Shah Rukh Khan shot the train entrance in Dilwale Dulhania Le Jayenge in only two takes.",
+    "In Titanic, the drawing of Rose was actually sketched by director James Cameron himself!",
+    "Interstellar's black hole simulation was so accurate that physicists published 3 scientific papers from it."
 ];
 
 function rotateFunFact() {
@@ -385,13 +373,11 @@ function rotateFunFact() {
 
 function surpriseMeMovie() {
     const randomMovie = moviesDB[Math.floor(Math.random() * moviesDB.length)];
-    showToast(🎲 Div-ine Destiny Picked: !, '✨');
+    showToast(`🎲 Div-ine Destiny Picked: ${randomMovie.title}!`, '✨');
     openDetailModal(randomMovie.id);
 }
-/* ==========================================================================
-   Feedback Manager & Star Rating Engine
-   ========================================================================== */
 
+// Feedback Manager & Star Rating Engine
 let selectedRating = 5;
 
 function setRating(rating) {
@@ -457,10 +443,8 @@ function renderFeedbackHistory() {
         `).join('')}
     `;
 }
-/* ==========================================================================
-   Global Event Listeners & Keyboard Shortcuts
-   ========================================================================== */
 
+// Global Event Listeners & Shortcuts
 function toggleMobileMenu() {
     const navLinks = document.querySelector('.nav-links');
     if (navLinks) {
@@ -495,3 +479,10 @@ function initEventListeners() {
     // Setup periodic fact rotator
     setInterval(rotateFunFact, 12000);
 }
+
+// Initialize on DOM load
+window.addEventListener('DOMContentLoaded', () => {
+    updateWatchlistBadge();
+    updateGenreCounts();
+    initEventListeners();
+});
