@@ -304,3 +304,60 @@ function closeDetailModal() {
     const modal = document.getElementById('detail-modal');
     if (modal) modal.classList.remove('active');
 }
+/* ==========================================================================
+   Watchlist (Favorites) LocalStorage Manager
+   ========================================================================== */
+
+function toggleWatchlist(movieId, event) {
+    if (event) event.stopPropagation();
+    
+    const index = AppState.watchlist.findIndex(m => m.id === movieId);
+    const movie = moviesDB.find(m => m.id === movieId);
+    
+    if (!movie) return;
+
+    if (index > -1) {
+        AppState.watchlist.splice(index, 1);
+        showToast(Removed \"\" from your Watchlist!, '💔');
+    } else {
+        AppState.watchlist.push(movie);
+        showToast(Added \"\" to your Watchlist!, '🍿');
+    }
+
+    localStorage.setItem('divine_watchlist', JSON.stringify(AppState.watchlist));
+    updateWatchlistBadge();
+
+    // Re-render if on current view
+    if (AppState.activePage === 'watchlist') {
+        renderWatchlist();
+    } else if (AppState.activePage === 'movies') {
+        renderMoviesList();
+    }
+}
+
+function updateWatchlistBadge() {
+    const badge = document.getElementById('nav-watchlist-count');
+    if (badge) {
+        badge.innerText = AppState.watchlist.length;
+    }
+}
+
+function renderWatchlist() {
+    const container = document.getElementById('watchlist-container');
+    const countEl = document.getElementById('watchlist-page-count');
+    
+    if (countEl) countEl.innerText = AppState.watchlist.length;
+    if (!container) return;
+
+    if (AppState.watchlist.length === 0) {
+        container.innerHTML = 
+            <div style=\"grid-column: 1 / -1; text-align: center; padding: 60px 20px; background: #1e272e; border: 3px solid #000; box-shadow: 6px 6px 0px #000;\">
+                <h3 style=\"font-size: 2.2rem; color: var(--primary); margin-bottom: 10px;\">YOUR WATCHLIST IS EMPTY!</h3>
+                <p style=\"font-size: 1.1rem; color: #fff; margin-bottom: 20px;\">Click the heart (❤️) on any movie to hoard it here for lazy weekends.</p>
+                <button class=\"btn-comic\" onclick=\"showPage('genre')\">Browse Genres</button>
+            </div>
+        ;
+    } else {
+        container.innerHTML = AppState.watchlist.map(m => createMovieCardHTML(m)).join('');
+    }
+}
