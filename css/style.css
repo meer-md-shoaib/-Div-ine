@@ -241,3 +241,116 @@ nav.comic-nav {
     cursor: pointer;
     box-shadow: 2px 2px 0px #000;
 }
+/* ==========================================================================
+   Hero Section, Fun Fact & Mood Bar
+   ========================================================================== */
+.hero {
+    text-align: center;
+    padding: 50px 10px 40px;
+    position: relative;
+}
+
+.hero-title {
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    color: var(--primary);
+    text-shadow: 5px 5px 0px #000;
+    line-height: 1;
+    margin-bottom: 12px;
+}
+
+.hero-subtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    color: #ffffff;
+    max-width: 680px;
+    margin: 0 auto 25px;
+    font-weight: 400;
+}
+
+.hero-badges-row {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+
+.comic-pill {
+    background: #000000;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    font-family: var(--font-comic);
+    font-size: 1.1rem;
+    padding: 4px 14px;
+    box-shadow: 3px 3px 0px #000;
+    letter-spacing: 1px;
+}
+
+.fun-fact-container {
+    background: var(--secondary);
+    color: #ffffff;
+    padding: 20px 30px;
+    border-radius: var(--radius-md);
+    display: inline-block;
+    max-width: 700px;
+    margin: 20px auto;
+    border: var(--border-extra);
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    transform: rotate(-1deg);
+    transition: transform 0.2s ease;
+}
+
+.fun-fact-container:hover {
+    transform: rotate(0deg) scale(1.02);
+}
+
+.fun-fact-container h3 {
+    color: var(--primary);
+    margin-bottom: 6px;
+    font-size: 1.6rem;
+}
+
+.mood-selector-box {
+    margin: 35px auto 10px;
+    background: #252e39;
+    padding: 22px 25px;
+    border: var(--border-thick);
+    box-shadow: var(--shadow-hard);
+    border-radius: var(--radius-md);
+    max-width: 900px;
+}
+
+.mood-title {
+    font-family: var(--font-comic);
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin-bottom: 15px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.mood-chips {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.mood-chip {
+    background: #ffffff;
+    color: #000000;
+    font-family: var(--font-comic);
+    font-size: 1.1rem;
+    padding: 8px 16px;
+    border: var(--border-thick);
+    box-shadow: 4px 4px 0px #000;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    user-select: none;
+}
+
+.mood-chip:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 7px 7px 0px var(--primary);
+    background: var(--primary);
+}
