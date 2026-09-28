@@ -361,3 +361,30 @@ function renderWatchlist() {
         container.innerHTML = AppState.watchlist.map(m => createMovieCardHTML(m)).join('');
     }
 }
+/* ==========================================================================
+   Surprise Me / Comic Movie Roulette & Trivia
+   ========================================================================== */
+
+const funFacts = [
+    \"Watching 3 hours of movies burns roughly 0 calories, but fills 100% of your soul.\",
+    \"In The Dark Knight, Heath Ledger designed the Joker makeup himself using drugstore cosmetics.\",
+    \"The sound of the T-Rex in Jurassic Park was made using baby elephants, tigers, and alligators.\",
+    \"The iconic 'I am your father' line was kept secret from even the actors until post-production.\",
+    \"The horse head in The Godfather was completely real. The actor's scream was 100% authentic shock.\",
+    \"Shah Rukh Khan shot the train entrance in Dilwale Dulhania Le Jayenge in only two takes.\",
+    \"In Titanic, the drawing of Rose was actually sketched by director James Cameron himself!\",
+    \"Interstellar's black hole simulation was so accurate that physicists published 3 scientific papers from it.\"
+];
+
+function rotateFunFact() {
+    const factEl = document.getElementById('hero-fun-fact');
+    if (!factEl) return;
+    const randomFact = funFacts[Math.floor(Math.random() * funFacts.length)];
+    factEl.innerText = randomFact;
+}
+
+function surpriseMeMovie() {
+    const randomMovie = moviesDB[Math.floor(Math.random() * moviesDB.length)];
+    showToast(🎲 Div-ine Destiny Picked: !, '✨');
+    openDetailModal(randomMovie.id);
+}
