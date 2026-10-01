@@ -39,8 +39,8 @@
 │   └── movies.json              # Portable JSON movie dataset for external APIs
 ├── assets/
 │   └── images/                  # Organized media assets & posters
-├── MOVIES_EXPANSION_GUIDE.md    # Architecture guide for scaling to 10,000+ movies
-└── README.md                    # Project documentation
+├── MOVIES_EXPANSION_GUIDE.md    
+└── README.md                    
 ```
 
 ---
