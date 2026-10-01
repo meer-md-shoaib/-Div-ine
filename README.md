@@ -34,11 +34,11 @@
 │   └── style.css                
 ├── js/
 │   ├── movies-data.js
-│   └── app.js                   # SPA router, search, filter, modals & watchlist
+│   └── app.js                   
 ├── data/
-│   └── movies.json              # Portable JSON movie dataset for external APIs
+│   └── movies.json              
 ├── assets/
-│   └── images/                  # Organized media assets & posters
+│   └── images/                  
 ├── MOVIES_EXPANSION_GUIDE.md    
 └── README.md                    
 ```
