@@ -29,11 +29,11 @@
 
 ```text
 -Div-ine/
-├── index.html                   # Upgraded Single Page Application structure
+├── index.html                   
 ├── css/
-│   └── style.css                # Modular comic pop-art design system & tokens
+│   └── style.css                
 ├── js/
-│   ├── movies-data.js           # Curated movie catalog with verdicts & trailers
+│   ├── movies-data.js
 │   └── app.js                   # SPA router, search, filter, modals & watchlist
 ├── data/
 │   └── movies.json              # Portable JSON movie dataset for external APIs
